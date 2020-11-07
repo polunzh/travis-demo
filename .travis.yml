@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+node_js:
+  - '10'
+  - '12'
+  - '14'
+services:
+  - docker
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: echo "docker --version"
+    after_deploy: docker build -t arcblock/abtnode:latest --no-cache .
+    on:
+      branch: master
+      node_js: 12
