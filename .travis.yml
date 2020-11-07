@@ -7,7 +7,6 @@ services:
 deploy:
   - provider: script
     script: docker --version
-    # after_deploy: docker build -t arcblock/abtnode:latest --no-cache .
-    after_deploy: echo "--------------"
+    after_script: docker build -t arcblock/abtnode:latest --no-cache .
     on:
       branch: master
